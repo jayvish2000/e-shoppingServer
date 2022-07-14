@@ -26,10 +26,11 @@ app.use((err, req, res, next) => {
     if (err.name === 'UnauthorizedError') {
         return res.status(401).json({ message: 'user not authorized' })
     }
-    if (err.name === 'UnauthorizedError') {
+    else if (err.name === 'UnauthorizedError') {
         return res.status(401).json({ message: 'invaild' })
+    }else{ 
+        return res.status(500).json(err);
     }
-    return res.status(500).json(err);
 });
 
 app.use(`${api}/categories`, categoriesRoutes)
@@ -49,5 +50,5 @@ mongoose.connect(process.env.CONNECTION_STRING).then(() => {
 
 let server = app.listen(process.env.PORT || 8080, function () {
     let port = server.address().port;
-    console.log('server is running on port' + port);
+    console.log(`server is running on port ${port}`);
 })
