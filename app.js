@@ -28,8 +28,8 @@ app.use((err, req, res, next) => {
     }
     else if (err.name === 'UnauthorizedError') {
         return res.status(401).json({ message: 'invaild' })
-    }else{ 
-        return res.status(500).json(err);
+    }else { 
+        return res.status(200).json({ message: 'success' });
     }
 });
 
