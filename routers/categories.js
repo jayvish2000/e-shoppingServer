@@ -27,7 +27,7 @@ router.post('/', async (req, res) => {
         color: req.body.color
     })
    
-    category = await category.save();
+     category.save();
     if (!category) {
         res.status(400).send('category can"t be created')
     }
