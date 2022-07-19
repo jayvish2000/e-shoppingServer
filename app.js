@@ -26,10 +26,10 @@ app.use((err, req, res, next) => {
     if (err.name === 'UnauthorizedError') {
         return res.status(401).json({ message: 'user not authorized' })
     }
-    else if (err.name === 'UnauthorizedError') {
-        return res.status(401).json({ message: 'invaild' })
-    }else { 
-        return res.status(200).json({ message: 'success' });
+    else if (err.name === 'ValidationError') {
+        return res.status(401).json({ message: err })
+    } else {
+        return res.status(200).json(err);
     }
 });
 

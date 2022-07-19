@@ -1,4 +1,4 @@
-const { Category } = require('../models/category')
+const {Category} = require('../models/category')
 const express = require('express');
 const router = express.Router();
 
@@ -19,11 +19,14 @@ router.get(`/:id`, async (req, res) => {
 })
 
 router.post('/', async (req, res) => {
+    console.log("category",  req.body.name)
+
     let category = new Category({
         name: req.body.name,
         icon: req.body.icon,
         color: req.body.color
     })
+   
     category = await category.save();
     if (!category) {
         res.status(400).send('category can"t be created')
