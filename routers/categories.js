@@ -1,4 +1,4 @@
-const Category  = require('../models/category')
+const Category = require('../models/category')
 const express = require('express');
 const router = express.Router();
 
@@ -22,8 +22,8 @@ router.post('/', async (req, res) => {
 
     let category = new Category({
         name: req.body.name,
-        // icon: req.body.icon,
-        // color: req.body.color
+        icon: req.body.icon,
+        color: req.body.color
     })
     console.log("category", category)
 
