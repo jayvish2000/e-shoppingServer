@@ -20,3 +20,4 @@ orderItemSchema.set('toJSON', {
 });
 
 exports.OrderItem = mongoose.model('OrderItem', orderItemSchema)
+exports.orderItemSchema = orderItemSchema;
