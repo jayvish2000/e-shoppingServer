@@ -23,13 +23,14 @@ app.use(morgan('tiny'));
 // app.use(authJwt());
 app.use('/public/uploads', express.static(__dirname))
 // app.use((err, req, res, next) => {
+//     console.log("req", req)
 //     if (err.name === 'UnauthorizedError') {
 //         return res.status(401).json({ message: 'user not authorized' })
 //     }
 //     else if (err.name === 'ValidationError') {
 //         return res.status(401).json({ message: err })
 //     } else {
-//         return res.status(500).json(err);
+//         return null
 //     }
 // });
 

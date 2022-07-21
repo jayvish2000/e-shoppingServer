@@ -19,7 +19,6 @@ router.get(`/:id`, async (req, res) => {
 })
 
 router.post(`/`, async (req, res) => {
-    console.log("req", req.body.name)
     let category = new Category({
         name: req.body.name
     })
