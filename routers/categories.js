@@ -19,11 +19,9 @@ router.get(`/:id`, async (req, res) => {
 })
 
 router.post(`/`, async (req, res) => {
-
+    console.log("req", req.body.name)
     let category = new Category({
-        name: req.body.name,
-        icon: req.body.icon,
-        color: req.body.color
+        name: req.body.name
     })
     console.log("category", category)
 
@@ -38,9 +36,7 @@ router.post(`/`, async (req, res) => {
 router.put('/:id', async (req, res) => {
     const category = await Category.findByIdAndUpdate(
         req.params.id, {
-        name: req.body.name,
-        icon: req.body.icon,
-        color: req.body.color
+        name: req.body.name
     }, { new: true })
     if (!category) {
         return res.status(400).send({ message: 'category can"t be updated' })

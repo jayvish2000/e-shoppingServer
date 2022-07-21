@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
 const cors = require('cors');
-const authJwt = require('./helpers/jwt');
+// const authJwt = require('./helpers/jwt');
 require('dotenv/config');
 
 app.use(cors());
@@ -20,18 +20,18 @@ const api = process.env.API_URL
 
 app.use(bodyParser.json());
 app.use(morgan('tiny'));
-app.use(authJwt());
+// app.use(authJwt());
 app.use('/public/uploads', express.static(__dirname))
-app.use((err, req, res, next) => {
-    if (err.name === 'UnauthorizedError') {
-        return res.status(401).json({ message: 'user not authorized' })
-    }
-    else if (err.name === 'ValidationError') {
-        return res.status(401).json({ message: err })
-    } else {
-        return res.status(200).json(err);
-    }
-});
+// app.use((err, req, res, next) => {
+//     if (err.name === 'UnauthorizedError') {
+//         return res.status(401).json({ message: 'user not authorized' })
+//     }
+//     else if (err.name === 'ValidationError') {
+//         return res.status(401).json({ message: err })
+//     } else {
+//         return res.status(500).json(err);
+//     }
+// });
 
 app.use(`${api}/categories`, categoriesRoutes)
 app.use(`${api}/products`, productsRoutes)
