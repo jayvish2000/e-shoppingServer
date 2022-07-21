@@ -41,7 +41,6 @@ router.post(`/`, async (req, res) => {
 })
 
 router.post(`/login`, async (req, res) => {
-    console.log("user req", req.body.email)
     const user = await User.findOne({ email: req.body.email })
     console.log("user", user)
     const secret = process.env.secret
@@ -50,7 +49,7 @@ router.post(`/login`, async (req, res) => {
     }
     if (user && bcrypt.compareSync(req.body.password, user.passwordHash)) {
         const token = jwt.sign({
-            userId: user._id,
+            userId: user.id,
             isAdmin: user.isAdmin
         }, secret, { expiresIn: '1week' })
         res.status(200).send({ user: user.email, token: token })
