@@ -60,7 +60,7 @@ router.post(`/`, upload.single('image'), async (req, res) => {
         return res.status(400).send({ message: 'image is required' })
 
     const fileName = req.file.filename
-    const basePath = `${req.protocol}://${req.get('host')}public/upload/`;
+    const basePath = `${req.protocol}://${req.get('host')}/public/upload/`;
 
     const product = new Product({
         name: req.body.name,
