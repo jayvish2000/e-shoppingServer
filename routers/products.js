@@ -19,7 +19,7 @@ const storage = multer.diskStorage({
         if (isValid) {
             uploadError = null
         }
-        cb(uploadError, '/public/uploads/')
+        cb(uploadError, 'public/uploads')
     },
     filename: function (req, file, cb) {
         const fileName = file.originalname.split(' ').join('-');
@@ -60,7 +60,7 @@ router.post(`/`, upload.single('image'), async (req, res) => {
         return res.status(400).send({ message: 'image is required' })
 
     const fileName = req.file.filename
-    const basePath = `${req.protocol}://${req.get('host')}/public/upload/`;
+    const basePath = `${req.protocol}://${req.get('host')}public/upload/`;
 
     const product = new Product({
         name: req.body.name,
@@ -145,7 +145,7 @@ router.put('/gallery-images/:id', upload.array('images'), async (req, res) => {
     }
     let imagesPath = [];
     const files = req.files;
-    const basePath = `${req.protocol}://${req.get('host')}/public/upload`;
+    const basePath = `${req.protocol}://${req.get('host')}/public/upload/`;
 
     if (files) {
         files.map(file => {
