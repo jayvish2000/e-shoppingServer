@@ -139,7 +139,7 @@ router.get(`/get/featured/:count`, async (req, res) => {
     res.send(products)
 })
 
-router.put('/gallery-images/:id', upload.array('image'), async (req, res) => {
+router.put('/gallery-images/:id', upload.array('images'), async (req, res) => {
     if (!mongoose.isValidObjectId(req.params.id)) {
         res.status(400).send({ message: 'Invaild product Id' })
     }
