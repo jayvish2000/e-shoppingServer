@@ -30,7 +30,7 @@ app.use('/public/uploads', express.static(__dirname + '/public/uploads'))
 //     else if (err.name === 'ValidationError') {
 //         return res.status(401).json({ message: err })
 //     } else {
-//         return null
+//         return res.status(500).json()
 //     }
 // });
 
